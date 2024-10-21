@@ -1,0 +1,14 @@
+# Binaries.
+__pycache__/
+
+# Testing.
+htmlcov/
+.coverage
+.coverage.*
+.hypothesis/
+.pytest_cache/
+staticfiles/
+# Environments.
+.env
+# Local python virtual environment
+.venv
