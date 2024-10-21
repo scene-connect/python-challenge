@@ -1,7 +1,6 @@
 import importlib.metadata
 import logging
 import os
-from datetime import timedelta
 from pathlib import Path
 
 import structlog
@@ -93,18 +92,7 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "Python Challenge API - Documentation",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
     "VERSION": importlib.metadata.version("python-challenge"),
-    "TAGS": [
-        {
-            "name": "Authentication",
-            "description": """
-Endpoints for issuing and revoking API tokens.</br></br><b>Deprecation Notice</b>: The old style of static keys
-which were issued directly by the ZUoS team are still supported but we recommend moving to issuing your own tokens.
-Also, note that the header prefix of the static keys is `Api-Key` while the header prefix of self-issued token is `Token`.
-So to move to the self-issued tokens, update your headers from <code>Authorization: Api-Key $STATIC_KEY</code> to
-<code>Authorization: Token $TOKEN</code>.
-            """,
-        },
-    ],
+    "TAGS": [],
     "POSTPROCESSING_HOOKS": [
         # Use DRF-spectacular's default enum processing hook.
         "drf_spectacular.hooks.postprocess_schema_enums",

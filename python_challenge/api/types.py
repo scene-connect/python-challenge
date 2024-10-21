@@ -1,6 +1,7 @@
 import pydantic
-from .home import HomePartial
+
+from ..types.home import Home
 
 
 class HomeDetailsResponse(pydantic.BaseModel):
-    home: HomePartial
+    home: Home

@@ -22,3 +22,7 @@ python manage.py runserver
 ```
 
 By default that will run on port 8000.
+
+## Instructions
+
+* Do not change or put anything in the `python_challenge.types` module. This is a collection of types copied over from other packages that is intended to be used as-is. You are not supposed to put your own code there.

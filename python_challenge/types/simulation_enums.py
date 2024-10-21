@@ -23,6 +23,14 @@ class Level(StrEnum):
     LOWEST_FLOOR_INTERIOR_ROOF = "LOWEST_FLOOR_INTERIOR_ROOF"
 
 
+class OccupancySchedule(StrEnum):
+    EVENINGS_ONLY = "EVENINGS_ONLY"
+    EVENINGS_AND_MOST_WEEKENDS = "EVENINGS_AND_MOST_WEEKENDS"
+    AT_HOME_MOST_OF_THE_TIME = "AT_HOME_MOST_OF_THE_TIME"
+    AT_HOME_MOST_OF_THE_TIME_CARED_FOR = "AT_HOME_MOST_OF_THE_TIME_CARED_FOR"
+    AWAY_DURING_THE_WEEK = "AWAY_DURING_THE_WEEK"
+
+
 class HotWaterSource(StrEnum):
     """
     Extra heat sources for hot-water, with some overlap between HeatingSystemSource

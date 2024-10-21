@@ -516,35 +516,35 @@ class Home(HomePartial):
     # Unfortunately, pyright is overly assertive that a child-class must have compatible
     # types with its parent, including optional in that restriction.
     # Similarly, they also have a check for missing default values for overridden fields.
-    # So we have to have a lot of type ignores for IncompatibleVariableOverride.
+    # So we have to have a lot of type ignores for reportGeneralTypeIssues.
     #
 
-    location: Point = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    location: Point = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="""
         Location of the home, as [latitude, longitude].
         If not known, can be looked up from either 'uprn' (preferred) or 'address'.
         """,
     )
-    property_type: epc_enums.PropertyType  # type: ignore[IncompatibleVariableOverride]
-    built_form: epc_enums.BuiltForm  # type: ignore[IncompatibleVariableOverride]
-    age_band: epc_enums.AgeBand  # type: ignore[IncompatibleVariableOverride]
-    north_angle: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    property_type: epc_enums.PropertyType  # type: ignore[reportGeneralTypeIssues]
+    built_form: epc_enums.BuiltForm  # type: ignore[reportGeneralTypeIssues]
+    age_band: epc_enums.AgeBand  # type: ignore[reportGeneralTypeIssues]
+    north_angle: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="The angle from-north of the front door of the home.",
         ge=0,
         lt=360,
     )
-    total_floor_area: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    total_floor_area: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         gt=0,
         description="Total floor area (m2)",
     )
-    room_height: float = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    room_height: float = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         ge=2,
         lt=5,
         description="""
             Interior room height, in metres.EPC field: floor_0_room_height.
             """,
     )
-    levels: list[simulation_enums.Level] = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    levels: list[simulation_enums.Level] = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="""
             The building 'levels' (floors).
             Currently this is a simple list of level types.
@@ -553,32 +553,32 @@ class Home(HomePartial):
             """,
         min_length=1,
     )
-    wall: Wall = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    wall: Wall = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="External wall details",
     )
-    external_wall_count: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    external_wall_count: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="Number of external walls"
     )
-    footprint: float = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    footprint: float = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         gt=0,
         description="Footprint of the home in m2.",
     )
-    doors: list[Door] = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    doors: list[Door] = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="Doors in external walls",
         min_length=1,
     )
-    glazing: Glazing  # type: ignore[IncompatibleVariableOverride]
-    window_count: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    glazing: Glazing  # type: ignore[reportGeneralTypeIssues]
+    window_count: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="Number of windows in external walls",
     )
-    is_mains_gas_present: bool = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    is_mains_gas_present: bool = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="""
             Whether there is a mains gas grid connection at the property.
             Null if unknown, ZUoS will attempt to assume based on the energy sources of the
             heating and hot water systems.
             """,
     )
-    main_heating_systems: list[HeatingSystem] = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    main_heating_systems: list[HeatingSystem] = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="""
         Main heating system(s) of the home.
         Must be at least one defined.
@@ -586,7 +586,7 @@ class Home(HomePartial):
         """,
         min_length=1,
     )
-    hot_water_systems: list[HotWaterSystem] = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    hot_water_systems: list[HotWaterSystem] = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="""
         Hot water system(s) of the home.
         Must be at least one defined.
@@ -594,15 +594,15 @@ class Home(HomePartial):
         """,
         min_length=1,
     )
-    fixed_lighting_outlets_count: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    fixed_lighting_outlets_count: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="number of fixed lighting outlets",
         ge=0,
     )
-    low_energy_lighting_outlets_count: int = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    low_energy_lighting_outlets_count: int = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="number of fixed lighting outlets with low energy lighting",
         ge=0,
     )
-    low_energy_lighting_percentage: float = pydantic.Field(  # type: ignore[IncompatibleVariableOverride]
+    low_energy_lighting_percentage: float = pydantic.Field(  # type: ignore[reportGeneralTypeIssues]
         description="percentage of fixed lighting outlets with low energy lighting",
         ge=0,
         le=100,
@@ -704,3 +704,32 @@ class Home(HomePartial):
                 )
 
         return self
+
+
+class Occupancy(pydantic.BaseModel):
+    occupants_adults: int | None = pydantic.Field(ge=1, default=None)
+    occupants_children: int | None = pydantic.Field(ge=0, default=None)
+    occupancy_schedule: simulation_enums.OccupancySchedule = (
+        simulation_enums.OccupancySchedule.EVENINGS_AND_MOST_WEEKENDS
+    )
+    heating_schedule: simulation_enums.OccupancySchedule | None = pydantic.Field(
+        description="""
+        Heating schedule.
+        Defaults is to use the 'occupancy_schedule' if not set/null.
+        """,
+        default=None,
+    )
+    annual_electricity_usage: int | None = pydantic.Field(
+        gt=0,
+        default=None,
+        description="""
+        Annual electricity consumption, in kWh.
+        """,
+    )
+    annual_energy_heating: int | None = pydantic.Field(
+        gt=0,
+        default=None,
+        description="""
+        Annual gas consumption, in kWh.
+        """,
+    )
