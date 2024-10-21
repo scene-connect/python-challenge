@@ -2,13 +2,102 @@
 name = "python-challenge"
 version = "0.0.0"
 description = "A technical interview challenge for python developers"
-authors = ["Howard Cox <dev.anubis@gmail.com>"]
+authors = ["Howard Cox <dev.anubis@gmail.com>", "Dolf Andringa ,<dolfandringa@gmail.com>"]
 readme = "README.md"
+license = "Proprietary"
+packages = [{include = "python_challenge"}]
+repository = "https://github.com/scene-connect/python-challenge"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.11,<3.12"
+django = {version = "~=5.0", extras = ["argon2"]}
+djangorestframework = "*"
+django-cors-headers = "*"
+django-csp = "*"
+django-debug-toolbar = "*"
+django-extensions = "*"
+django-permissions-policy = "*"
+django-structlog = "*"
+drf-spectacular = "*"
+gunicorn = "*"
+httpx = {version = "*", extras = ["brotli", "http2"]}
+python-dotenv = "*"
+structlog = "*"
+uvicorn = {version = "*", extras = ["standard"]}
+pydantic = ">=2.2.1"
+geojson-pydantic = "^1.1.1"
+markdown = "^3.7"
+whitenoise = {version = "*", extras = ["brotli"]}
 
+
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+django-types = "*"
+djangorestframework-types = "==0.7.1"  # Locked for sbdchd/djangorestframework-types#17
+pyright = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+pytest-mock = "*"
+pytest-structlog = "*"
+respx = "*"
+rich = "*"
+ruff = "*"
+pyupgrade = "*"
+django-upgrade = "*"
+isort = "*"
+pytest-asyncio = "*"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "manage.py",
+    "python_challenge/asgi.py",
+    "python_challenge/wsgi.py",
+    "uvicorn_worker.py",
+    "python_challenge/types/*",
+]
+source = ["."]
+
+[tool.coverage.report]
+exclude_also = [
+    "class .*\\bProtocol\\):",
+    "if .*TYPE_CHECKING:",
+    "@abc.abstractmethod",
+    "@abstractmethod",
+    "@overload",
+    "@typing.overload",
+]
+fail_under = 100
+show_missing = true
+
+[tool.isort]
+profile = "black"
+force_single_line = "true"
+
+[tool.pyright]
+stubPath = "./typings"
+typeCheckingMode = "basic"
+reportImportCycles = true
+reportUnnecessaryTypeIgnoreComment = "error"
+venv = ".venv"
+venvPath = "."
+exclude = ["**/migrations", ".venv"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "python_challenge.settings"
+addopts = "--cov"
+python_files = ["tests.py", "**/tests/test_*.py"]
+
+[tool.ruff.lint]
+# Ignore max line length - black will handle this and it's okay to go over somtimes.
+ignore = ["E501"]

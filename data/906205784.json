@@ -1,0 +1,155 @@
+{
+  "location": {
+    "type": "Point",
+    "coordinates": [-3.2119865, 55.9593075]
+  },
+  "uprn": "906205784",
+  "address": {
+    "lines": ["44 RAEBURN PLACE"],
+    "town": "EDINBURGH",
+    "postcode": "EH4 1HL",
+    "country": "United Kingdom"
+  },
+  "property_type": "house",
+  "built_form": "semi-Detached",
+  "age_band": "A",
+  "total_floor_area": 241,
+  "meter_type": "Single",
+  "wall": {
+    "is_as_built": true,
+    "has_insulation": false,
+    "is_insulation_assumed": true,
+    "insulation_thickness": null,
+    "average_thermal_transmittance": "1.7184332484519738",
+    "wall_type": "sandstone or limestone",
+    "wall_thickness": 700,
+    "surface_area": 140,
+    "perimeter": 29,
+    "insulation_position": "no insulation",
+    "insulation_material": null
+  },
+  "external_wall_count": 3,
+  "floor": {
+    "is_as_built": null,
+    "has_insulation": false,
+    "is_insulation_assumed": true,
+    "insulation_thickness": null,
+    "average_thermal_transmittance": "1.6780333813021107",
+    "floor_type": "suspended",
+    "external_air_below": false,
+    "unheated_space_below": false,
+    "insulation_position": "Between Joists"
+  },
+  "footprint": 96.4,
+  "doors": [
+    {
+      "average_thermal_transmittance": "2.9999999999922915",
+      "is_insulated": null,
+      "is_insulation_assumed": null,
+      "direct_to_outside": true
+    }
+  ],
+  "heat_loss_corridor": null,
+  "glazing": {
+    "glazing_type": "double glazing",
+    "multiple_glazing_type": null,
+    "multiple_glazing_percentage": 30,
+    "average_thermal_transmittance": "3.0999999999287438",
+    "installation_year_range": [1994, 2024],
+    "windows_construction": "PVC",
+    "glazing_gap": "12",
+    "sap_glazed_area": 1,
+    "glazing_ratio": 0.25912142857142856
+  },
+  "window_count": 7,
+  "north_angle": 0,
+  "epc_suggested_improvements": [
+    "replace single glazed windows with low-E double glazed windows",
+    "internal or external wall insulation",
+    "floor insulation (suspended floor)",
+    "solar photovoltaic panels, 2.5 kWp",
+    "room-in-roof insulation"
+  ],
+  "is_listed_building": true,
+  "is_in_conservation_area": false,
+  "fixed_lighting_outlets_count": 24,
+  "low_energy_lighting_outlets_count": 24,
+  "low_energy_lighting_percentage": 100,
+  "habitable_room_count": 7,
+  "heated_room_count": 7,
+  "room_height": 2.4,
+  "draught_proofed_window_percentage": null,
+  "draught_proofed_door_percentage": null,
+  "levels": ["GROUND_FLOOR", "MID_FLOOR", "ROOF_ROOM"],
+  "is_mains_gas_present": true,
+  "main_heating_systems": [
+    {
+      "source_properties": {
+        "system_type": "boiler",
+        "condensing": true,
+        "combination": false,
+        "back_boiler": false
+      },
+      "energy_source": "mains gas",
+      "efficiency": {
+        "Space heating": [0.74, 0.84]
+      },
+      "age": 4,
+      "source": "boiler",
+      "emitters": ["radiators"]
+    }
+  ],
+  "secondary_heating_systems": [
+    {
+      "source_properties": null,
+      "energy_source": "mains gas",
+      "efficiency": {
+        "Space heating": [0.74, 0.84]
+      },
+      "age": 4,
+      "source": "boiler",
+      "emitters": ["radiators"]
+    }
+  ],
+  "heating_systems_controls": ["single room thermostat", "trv", "programmer"],
+  "hot_water_systems": [
+    {
+      "source_properties": null,
+      "energy_source": null,
+      "efficiency": {
+        "Hot water": [0.74, 0.84]
+      },
+      "age": 0,
+      "source": "from main system",
+      "storage": {
+        "volume": 110,
+        "insulation_thickness": 12,
+        "insulation_material": "mineral wool",
+        "has_thermostat": true
+      }
+    }
+  ],
+  "roof": {
+    "is_as_built": null,
+    "has_insulation": false,
+    "is_insulation_assumed": true,
+    "insulation_thickness": null,
+    "average_thermal_transmittance": "2.613649569346439",
+    "roof_type": "roof room(s)",
+    "surface_area": 111.31313189975985,
+    "pitch": 30,
+    "insulation_position": "At Rafters"
+  },
+  "solar_pv": [],
+  "available_pv_array_size": 53.656565949879926,
+  "end_use_energy_sources": {
+    "Cooking": "electric",
+    "Lighting": "electric",
+    "Hot water": "mains gas",
+    "Space heating": "mains gas",
+    "Electronics and other": "electric",
+    "Cold and wet appliances": "electric"
+  },
+  "epc_rating": "D",
+  "epc_score": 59
+}
