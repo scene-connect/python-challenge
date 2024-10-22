@@ -43,7 +43,7 @@ hard-coded data. No other UPRNs will work with this endpoint.
 
 1. Add a simple "UI" prototype for a chart, comparing monthly energy usage before and
 after a set of home improvements.
-    - Use the tools you think get you the befst results the quickest.
+    - Use the tools you think get you the best results the quickest.
         - This could be a single-page-application framework, or just HTML with a
           [Django view](https://docs.djangoproject.com/en/5.1/topics/http/views/)
           using CDN assets.
