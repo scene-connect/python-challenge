@@ -38,24 +38,26 @@ hard-coded data. No other UPRNs will work with this end-point.
 
 ## Challenge
 
-1. Add a simple UI prototype for a chart comparing monthly energy usage before and after
+1. Add a simple "UI" prototype for a chart, comparing monthly energy usage before and after
    an improvement.
     - You may use whatever means you wish to add the UI.
         - We recommend either a single-page-application framework or just writing HTML
           and CDN assets with a [Django views](https://docs.djangoproject.com/en/5.1/topics/http/views/)
         - If you do not have a preferred JavaScript charting library,
           try [ChartJS](https://www.chartjs.org/).
-    - You can choose whatever chart type you feel is appropriate.
+    - You can choose whatever chart style you feel is appropriate.
+    - You don't need to consider aesthetics, other than making the chart understandable.
     - You do not need to consider security, access controls, or other usual best-practices
       for this challenge. Treat it as an internal prototyping exercise.
-2. You should add an end-point to the `python_challenge.api` app to supply the data for
+
+2. You should add an end-point to the `python_challenge.api.views` to supply the data for
    the chart.
     - We have provided a utility function `python_challenge.utils.get_results` which
       fetches a `RetrofitPlannerResponsePublic` object. This object contains all
       the data you will need (and more)
-    - You should format the data into whatever structure your chart requires in python.
-    - You can use the UUID `1e0e7511-9e40-4b13-8c52-4f9c26c41c55` which has results
-      for improving UPRN `906205784`.
+          - You can use the UUID `1e0e7511-9e40-4b13-8c52-4f9c26c41c55` which has
+            baseline and improved simulation results for UPRN `906205784`.
+    - You should format the data into whatever structure your chart requires, in python.
 
 
 ## Notes
