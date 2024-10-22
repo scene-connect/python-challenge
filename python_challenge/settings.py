@@ -54,6 +54,7 @@ DEBUG = os.environ.get("DEBUG") == "1"
 
 if ENVIRONMENT == "development" or ALLOW_LOCALHOST:  # pragma: no cover
     ALLOWED_HOSTS.append("localhost")
+    ALLOWED_HOSTS.append("127.0.0.1")  # Allows using the django runserver url.
 if ENVIRONMENT == "development":  # pragma: no cover
     CSRF_COOKIE_DOMAIN = None
     SECURE_HSTS_SECONDS = 0

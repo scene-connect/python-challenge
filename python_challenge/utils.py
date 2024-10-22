@@ -21,8 +21,8 @@ def get_home(uprn: str) -> Home:  # pragma: no cover
 
 
 def get_results(uuid: str) -> RetrofitPlannerResponsePublic:  # pragma: no cover
-    if uuid == "a0ce4c08-6ca3-46f9-8c7b-253372f2cbc5":
-        with open(PATH_DATA / "a0ce4c08-6ca3-46f9-8c7b-253372f2cbc5.json") as file:
+    if uuid == "1e0e7511-9e40-4b13-8c52-4f9c26c41c55":
+        with open(PATH_DATA / "1e0e7511-9e40-4b13-8c52-4f9c26c41c55.json") as file:
             return RetrofitPlannerResponsePublic.model_validate_json(file.read())
     raise FileNotFoundError("UUID not found")
 
