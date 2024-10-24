@@ -29,6 +29,7 @@ CORS_ALLOW_HEADERS = (
     "baggage",
 )
 CORS_EXPOSE_HEADERS = ("senty-trace", "baggage")
+CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_COOKIE_DOMAIN: str | None = DOMAIN_NAME
 CSRF_COOKIE_SECURE = True
@@ -59,9 +60,10 @@ if ENVIRONMENT == "development":  # pragma: no cover
     CSRF_COOKIE_DOMAIN = None
     SECURE_HSTS_SECONDS = 0
     dev_url = f"https://localhost:{os.environ.get('PORT', 8000)}"
+    dev_nextjs_url = "https://localhost:3000"
     CSRF_TRUSTED_ORIGINS.append(dev_url)
     CSRF_TRUSTED_ORIGINS.append(dev_url)
-    CORS_ALLOWED_ORIGINS = [dev_url]
+    CORS_ALLOWED_ORIGINS = [dev_url, dev_nextjs_url]
 
 CSP_SCRIPT_SRC = [
     "'self'",
@@ -109,7 +111,7 @@ APPEND_SLASH = False
 INSTALLED_APPS = [
     "python_challenge.docs.apps.DocsConfig",
     "python_challenge.api.apps.ApiConfig",
-    "corsheaders",
+    "corsheaders", 
     "debug_toolbar",
     "rest_framework",
     "drf_spectacular",
