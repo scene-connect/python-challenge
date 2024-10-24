@@ -9,4 +9,9 @@ urlpatterns = [
         views.HomeDetailsByUPRN.as_view(),
         name="get-home",
     ),
+    path(
+        r"energy/<str:uuid>", # Get the energy estimate for one simulation run, by run uuid
+        views.EnergyByUUID.as_view(),
+        name="get-energy",
+    ),
 ]
