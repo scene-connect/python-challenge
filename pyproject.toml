@@ -13,7 +13,7 @@ name = "PyPI"
 priority = "primary"
 
 [tool.poetry.dependencies]
-python = "^3.11,<3.12"
+python = "^3.10,<3.12"
 django = {version = "~=5.0", extras = ["argon2"]}
 djangorestframework = "*"
 django-cors-headers = "*"
@@ -32,7 +32,6 @@ pydantic = ">=2.2.1"
 geojson-pydantic = "^1.1.1"
 markdown = "^3.7"
 whitenoise = {version = "*", extras = ["brotli"]}
-
 
 
 [tool.poetry.group.dev.dependencies]

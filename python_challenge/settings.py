@@ -58,10 +58,7 @@ if ENVIRONMENT == "development" or ALLOW_LOCALHOST:  # pragma: no cover
 if ENVIRONMENT == "development":  # pragma: no cover
     CSRF_COOKIE_DOMAIN = None
     SECURE_HSTS_SECONDS = 0
-    dev_url = f"https://localhost:{os.environ.get('PORT', 8000)}"
-    CSRF_TRUSTED_ORIGINS.append(dev_url)
-    CSRF_TRUSTED_ORIGINS.append(dev_url)
-    CORS_ALLOWED_ORIGINS = [dev_url]
+    CORS_ALLOW_ALL_ORIGINS = True
 
 CSP_SCRIPT_SRC = [
     "'self'",
