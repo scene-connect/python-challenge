@@ -13,7 +13,7 @@ name = "PyPI"
 priority = "primary"
 
 [tool.poetry.dependencies]
-python = "^3.10,<3.12"
+python = "^3.10,<4.0"
 django = {version = "~=5.0", extras = ["argon2"]}
 djangorestframework = "*"
 django-cors-headers = "*"

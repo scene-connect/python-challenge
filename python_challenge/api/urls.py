@@ -9,4 +9,8 @@ urlpatterns = [
         views.HomeDetailsByUPRN.as_view(),
         name="get-home",
     ),
+    path(
+        r"before_after_energy_usage/<str:uuid>",
+        views.EnergyComparisonByUUID.as_view(),
+        ),
 ]
