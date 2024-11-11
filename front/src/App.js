@@ -1,4 +1,3 @@
-import './App.css';
 import EnergyComparisonChart from './components/EnergyComparisonChart';
 
 function App() {
