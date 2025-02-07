@@ -21,12 +21,12 @@ def home() -> Home:
 
 
 @pytest.fixture
-def run_id() -> str:
+def run_id() -> str:  # pragma: no cover
     return "1e0e7511-9e40-4b13-8c52-4f9c26c41c55"
 
 
 @pytest.fixture
-def results() -> RetrofitPlannerResponsePublic:
+def results() -> RetrofitPlannerResponsePublic:  # pragma: no cover
     with open(PATH_DATA / "1e0e7511-9e40-4b13-8c52-4f9c26c41c55.json") as file:
         return RetrofitPlannerResponsePublic.model_validate_json(file.read())
 
