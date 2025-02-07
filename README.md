@@ -8,7 +8,7 @@ end-result.
 You will need:
 - git
 - python (^3.11)
-- poetry (`pipx install poetry` is easiest)
+- poetry (^1.8, `pipx install poetry^1.8`)
 
 You should be able to clone this repository, and setup a virtual environment using
 poetry:
@@ -16,6 +16,11 @@ poetry:
 poetry install
 poetry shell
 ```
+(
+If using poetry 2.0, `shell` has been removed, but can be restored with a plugin:
+`pipx inject poetry poetry-plugin-shell` or you can do
+`eval $(poetry env activate)`
+)
 
 Copy the example environment file:
 ```shell
