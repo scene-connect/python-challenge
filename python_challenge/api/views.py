@@ -40,7 +40,7 @@ Get all the details ZUoS has about a Home, by it's UPRN.
     def get(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         uprn = self.kwargs["uprn"]
         try:
-            home = get_home(uprn)
+            home = get_home(uprn=uprn)
         except FileNotFoundError:
             raise NotFound(detail=UPRN_NOT_FOUND)
         except pydantic.ValidationError as error:

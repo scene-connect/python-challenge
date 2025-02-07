@@ -21,7 +21,7 @@ def test_get_uprn(home: Home, uprn: str, mocker: MockerFixture, api_client: APIC
     assert response.status_code == http.HTTPStatus.OK
     actual_response = HomeDetailsResponse.model_validate_json(response.content)
     assert actual_response.home == home
-    mock_get_home.assert_called_once_with(uprn)
+    mock_get_home.assert_called_once_with(uprn=uprn)
 
 
 def test_get_unknown_uprn(uprn: str, mocker: MockerFixture, api_client: APIClient):
@@ -34,7 +34,7 @@ def test_get_unknown_uprn(uprn: str, mocker: MockerFixture, api_client: APIClien
         reverse("get-home", kwargs={"uprn": uprn}),
     )
     assert response.status_code == http.HTTPStatus.NOT_FOUND
-    mock_get_home.assert_called_once_with(uprn)
+    mock_get_home.assert_called_once_with(uprn=uprn)
 
 
 def test_get_invalid_data(uprn: str, mocker: MockerFixture, api_client: APIClient):
@@ -50,4 +50,4 @@ def test_get_invalid_data(uprn: str, mocker: MockerFixture, api_client: APIClien
         reverse("get-home", kwargs={"uprn": uprn}),
     )
     assert response.status_code == http.HTTPStatus.BAD_REQUEST
-    mock_get_home.assert_called_once_with(uprn)
+    mock_get_home.assert_called_once_with(uprn=uprn)
