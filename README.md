@@ -46,8 +46,23 @@ hard-coded data. No other UPRNs will work with this endpoint.
 
 ## Challenge
 
-1. Add a simple "UI" prototype for a chart, comparing monthly energy usage before and
+### User story
+Home owners need a chart to compare the current (baseline) energy usage of their home
+(from our simulations) and the potential _improved_ energy usage with proposed energy
+saving measures.
+
+This challenge is to create a prototype for that chart.
+
+### Technical requirements
+
+
+You should choose the best chart style to display the data.
+
+1. Add a simple prototype for a chart, **comparing monthly energy usage** before and
 after a set of home improvements.
+    - The chart needs to compare two sets of monthly energy data. (See requirement 2 below)
+        - Pick the best chart style to display the data, but aesthetics are not a
+          requirement for this prototype.
     - Use the tools you think get you the best results the quickest.
         - This could be a single-page-application framework, or just HTML with a
           [Django view](https://docs.djangoproject.com/en/5.1/topics/http/views/)
@@ -61,12 +76,18 @@ after a set of home improvements.
 
 2. You should add an endpoint to the `python_challenge.api.views` to supply the data for
    the chart.
-    - We have provided a utility function `python_challenge.utils.get_results` which
-      fetches a `RetrofitPlannerResponsePublic` object.
+    - There is an existing Django view for getting a `Home` object, with the details of
+      the home (by UPRN - Unique Property Reference Number). This is provided as an example
+      in case you aren't familiar with Django (and Django Rest Framework).
+    - You should add a second view, which will return the necessary chart data.
+      - The data formatting should be done in python, so that the UI (above) simply
+        gets the necessary data for the chart.
+    - We have provided a utility function `python_challenge.utils.get_results` in `utils.py`
+      which fetches a `RetrofitPlannerResponsePublic` object.
         - This object contains all the data you will need (and more, see the notes below
           about what data to use).
-        - You can use the UUID `1e0e7511-9e40-4b13-8c52-4f9c26c41c55` which has baseline
-          and improved simulation results for UPRN `906205784`.
+        - You can use the UUID `1e0e7511-9e40-4b13-8c52-4f9c26c41c55` which has baseline (before)
+          and improved (after) energy results for a home.
     - You should format the data into whatever structure your chart requires, in python.
 
 
@@ -74,14 +95,13 @@ after a set of home improvements.
 
 The `RetrofitPlannerResponsePublic` has a lot of data, but for this challenge the two
 fields you need are:
-- `$.baseline_energy_profile.monthly_energy_total`
-- `$.improvement_plan.energy_profile.monthly_energy_total`
+- `baseline_energy_profile.monthly_energy_total`
+- `improvement_plan[0].energy_profile.monthly_energy_total`
 
 These are both `dict[MonthNumber, EnergyConsumptionSummary]`, and have an `energy`
 sub-field with the total household energy consumption for the month, in kWh.
-
-The chart needs to compare these two data series. You should choose how best to display
-the data.
+They also include cost and carbon, but we don't need to disply that data for this
+prototype chart.
 
 
 ## Notes
