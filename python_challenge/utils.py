@@ -26,6 +26,5 @@ def get_results(uuid: str) -> RetrofitPlannerResponsePublic:  # pragma: no cover
             return RetrofitPlannerResponsePublic.model_validate_json(file.read())
     raise FileNotFoundError("UUID not found")
 
-
 # TODO could make both of these into django models and have a migration script to
 #      pre-populate the database, but really who cares...
