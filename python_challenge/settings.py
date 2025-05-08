@@ -170,6 +170,8 @@ USE_TZ = True
 # Static files.
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+if not os.path.isdir(STATIC_ROOT):  # pragma: no cover
+    os.makedirs(STATIC_ROOT, mode=0o755)
 
 STATIC_URL = "static/"
 
