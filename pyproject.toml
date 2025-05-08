@@ -96,6 +96,7 @@ exclude = ["**/migrations", ".venv"]
 DJANGO_SETTINGS_MODULE = "python_challenge.settings"
 addopts = "--cov"
 python_files = ["tests.py", "**/tests/test_*.py"]
+asyncio_default_fixture_loop_scope = "session"
 
 [tool.ruff.lint]
 # Ignore max line length - black will handle this and it's okay to go over somtimes.
