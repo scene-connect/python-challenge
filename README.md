@@ -8,7 +8,10 @@ end-result.
 You will need:
 - git
 - python (^3.11)
-- poetry (^1.8, `pipx install poetry^1.8`)
+- poetry (^2.1)
+  - Install with `pipx install "poetry>=2.1"`
+  - And install the `poetry-shell` plugin for easier virtual environments: `pipx inject poetry poetry-plugin-shell`
+  - Or see [their installation instructions](https://python-poetry.org/docs/#installation)
 
 You should be able to clone this repository, and setup a virtual environment using
 poetry:
@@ -16,11 +19,6 @@ poetry:
 poetry install
 poetry shell
 ```
-(
-If using poetry 2.0, `shell` has been removed, but can be restored with a plugin:
-`pipx inject poetry poetry-plugin-shell` or you can do
-`eval $(poetry env activate)`
-)
 
 Copy the example environment file:
 ```shell
@@ -43,7 +41,7 @@ The basic `api` Django app does not use authentication. You can try out the exis
 For the challenge we're not actually using a database, so the APIs will only fetch
 hard-coded data. No other UPRNs will work with this endpoint.
 
-
+---
 ## Challenge
 
 ### User story
@@ -54,7 +52,6 @@ saving measures.
 This challenge is to create a prototype for that chart.
 
 ### Technical requirements
-
 
 You should choose the best chart style to display the data.
 
@@ -103,7 +100,7 @@ sub-field with the total household energy consumption for the month, in kWh.
 They also include cost and carbon, but we don't need to disply that data for this
 prototype chart.
 
-
+---
 ## Notes
 
 ### `python_challenge/types/`
@@ -124,10 +121,17 @@ pre-commit install
 pre-commit run --all-files
 ```
 
-- We have a 100% test-coverage policy, so please add a unit test to
-`python_challenge/api/tests/` for the new endpoint.
-    - Currently, test-coverage is not 100% because we have provided some fixtures for
-    you to use in your test, see `python_challenge/api/tests/conftest.py`
-    - For the UI prototype you do not need to write equivalent unit tests, however
-      if you do add the UI as a Django view please add a test to check that the view
-      responds with a `HTTPStatus.OK`
+### Unit tests
+
+You can run the existing tests with:
+```shell
+pytest
+```
+This will  also provide a coverage report, we have a 100% test-coverage policy so please
+add a unit test to `python_challenge/api/tests/` for the new endpoint.
+
+We have provided some test fixtures for you to use in your test, see: `python_challenge/api/tests/conftest.py`
+
+For the UI prototype you do not need to write equivalent unit tests, however
+if you do add the UI as a Django view please add a test to check that the view
+responds to requests with a `HTTPStatus.OK`.
