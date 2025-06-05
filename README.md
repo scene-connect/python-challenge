@@ -42,6 +42,7 @@ For the challenge we're not actually using a database, so the APIs will only fet
 hard-coded data. No other UPRNs will work with this endpoint.
 
 ---
+
 ## Challenge
 
 ### User story
@@ -55,24 +56,14 @@ This challenge is to create a prototype for that chart.
 
 You should choose the best chart style to display the data.
 
-1. Add a simple prototype for a chart, **comparing monthly energy usage** before and
-after a set of home improvements.
-    - The chart needs to compare two sets of monthly energy data. (See requirement 2 below)
-        - Pick the best chart style to display the data, but aesthetics are not a
-          requirement for this prototype.
-    - Use the tools you think get you the best results the quickest.
-        - This could be a single-page-application framework, or just HTML with a
-          [Django view](https://docs.djangoproject.com/en/5.1/topics/http/views/)
-          using CDN assets.
-        - If you do not have a preferred JavaScript charting library, try
-          [ChartJS](https://www.chartjs.org/).
-    - You can choose whatever chart style you feel is most appropriate.
-    - You don't need to consider aesthetics, just make the chart understandable.
-    - You do not need to consider security, access controls, or other usual best-practices
-      for this challenge. Treat it as an internal prototyping exercise.
+You do not need to consider security, access controls, or other usual best-practices
+for this challenge. Treat it as an internal prototyping exercise.
 
-2. You should add an endpoint to the `python_challenge.api.views` to supply the data for
-   the chart.
+There are two major components for the challenge:
+
+1. API
+    - You should add a new endpoint to the `python_challenge.api.views` to supply the
+      data for the chart.
     - There is an existing Django view for getting a `Home` object, with the details of
       the home (by UPRN - Unique Property Reference Number). This is provided as an example
       in case you aren't familiar with Django (and Django Rest Framework).
@@ -85,9 +76,26 @@ after a set of home improvements.
           about what data to use).
         - You can use the UUID `1e0e7511-9e40-4b13-8c52-4f9c26c41c55` which has baseline (before)
           and improved (after) energy results for a home.
-    - You should format the data into whatever structure your chart requires, in python.
+      - Unit tests
+        - We have a 100% code coverage target for all our python projects.
+        - Please see the notes below.
+    - You should format the data into whatever structure your chart requires in python.
+2. Chart
+    - Add a simple prototype for the chart
+    - The chart needs to compare two sets of monthly energy data.
+        - Pick the best chart style to display the data, but aesthetics are not a
+          requirement for this prototype.
+    - Use the tools you think get you the best results the quickest.
+        - This could be a single-page-application framework, a simple HTML page, or a
+          [Django view](https://docs.djangoproject.com/en/5.1/topics/http/views/)
+        - You can use CDN assets for any libraries.
+        - If you do not have a preferred JavaScript charting library, try
+          [ChartJS](https://www.chartjs.org/).
+    - You can choose whatever chart style you feel is most appropriate.
+    - You don't need to consider aesthetics, just make the chart understandable.
+    - You do not need to write any unit tests for the chart.
 
-
+## Data structures
 ### RetrofitPlannerResponsePublic
 
 The `RetrofitPlannerResponsePublic` has a lot of data, but for this challenge the two
@@ -97,7 +105,7 @@ fields you need are:
 
 These are both `dict[MonthNumber, EnergyConsumptionSummary]`, and have an `energy`
 sub-field with the total household energy consumption for the month, in kWh.
-They also include cost and carbon, but we don't need to disply that data for this
+They also include cost and carbon, but we don't need to display that data for this
 prototype chart.
 
 ---
@@ -115,9 +123,14 @@ We have included several python linter tools we use: black, isort, ruff, pyright
 These are configured to be run with [pre-commit](https://pre-commit.com/) and will be
 run before each commit and push.
 
-Please install and check the pre-commit hooks with:
+Please install the git hooks once you have set up your virtual environment:
 ```shell
 pre-commit install
+```
+
+The checks should run automatically before each commit and push, but you can also
+run them manually with:
+```shell
 pre-commit run --all-files
 ```
 
@@ -127,8 +140,7 @@ You can run the existing tests with:
 ```shell
 pytest
 ```
-This will  also provide a coverage report, we have a 100% test-coverage policy so please
-add a unit test to `python_challenge/api/tests/` for the new endpoint.
+This will  also provide a coverage report.
 
 We have provided some test fixtures for you to use in your test, see: `python_challenge/api/tests/conftest.py`
 
