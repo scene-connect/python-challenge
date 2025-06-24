@@ -14,7 +14,7 @@ priority = "primary"
 
 [tool.poetry.dependencies]
 python = "^3.11,<4.0"
-django = {version = "~=5.1", extras = ["argon2"]}
+django = {version = "~=5.2", extras = ["argon2"]}
 djangorestframework = "*"
 django-cors-headers = "*"
 django-csp = "*"
